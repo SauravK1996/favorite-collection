@@ -1,8 +1,9 @@
-import { createStore } from 'redux';
+// import { createStore } from 'redux';
 import {createSelector} from 'reselect';
 
+// input selector: it's a function that takes the whole state and returns a slice of it.
 const selectCart = state => state.cart;
-const selectUser = state => state.user;
+// const selectUser = state => state.user;
 
 export const selectCartItems = createSelector(
     [selectCart],
@@ -13,6 +14,7 @@ export const selectCartHidden = createSelector(
     [selectCart],
     cart => cart.hidden
 );
+
 
 export const selectCartItemsCount = createSelector(
     [selectCartItems],

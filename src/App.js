@@ -5,21 +5,21 @@ import Homepage from './pages/homepage/homepage.component'
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-// import {auth, createUserProfileDocument, addCollectionAndDocuments} from './firebase/firebase.utils';
-import {auth, createUserProfileDocument} from './firebase/firebase.utils';
+// import {auth,createUserProfileDocument,addCollectionAndDocuments } from './firebase/firebase.utils';
+import {auth,createUserProfileDocument} from './firebase/firebase.utils';
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions';
 import {selectCurrentUser} from './redux/user/user.selector';
 import {createStructuredSelector} from 'reselect';
 import CheckoutPage from './pages/checkout/checkout.component';
-// import {selectCollectionsForPreview} from './redux/shop/shop.selector'; 
+// import {selectCollectionsForPreview} from './redux/shop/shop.selector';
 
 class App extends React.Component{
   
   unsubscribeFromAuth = null;
 
   componentDidMount(){
-    // const {setCurrentUser, collectionsArray} = this.props;
+    //const {setCurrentUser, collectionsArray} = this.props;
     const {setCurrentUser} = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
@@ -33,7 +33,7 @@ class App extends React.Component{
         });
       }else{
         setCurrentUser(userAuth);
-        //addCollectionAndDocuments('collections',collectionsArray.map(({title, items}) => ({title, items})));
+        //addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items})));
       }
     });
   }
@@ -45,6 +45,8 @@ class App extends React.Component{
   render (){
     return (
       <div>
+        {/* <Header currentUser={this.state.currentUser}/> 
+          this is because header component taking the current user value from the reducer */}
         <Header />
         <Switch>
           <Route exact path="/" component={Homepage} />

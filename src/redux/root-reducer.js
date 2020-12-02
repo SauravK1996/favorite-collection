@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage';// gives localStorage of window object
 
 import userReducer from './user/user.reducer';
 import cartReducer from './cart/cart.reducer';
